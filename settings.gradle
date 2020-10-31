@@ -1,0 +1,9 @@
+include ':httpmime-4.5.6'
+include ':httpcore-4.4.10'
+include ':httpclient-4.5.6'
+include ':httpclient5-5.0.3'
+include ':httpcore5-5.0.2'
+include ':httpclient5-5.0.3'
+include ':mysql-connector-java-5.1.49-bin'
+include ':app'
+rootProject.name = "WCF"
