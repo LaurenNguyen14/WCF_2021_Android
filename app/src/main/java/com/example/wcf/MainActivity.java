@@ -1,7 +1,5 @@
 package com.example.wcf;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -12,11 +10,12 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.sql.*;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
@@ -85,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
                 if (result != null) {
                     Toast.makeText(getApplicationContext(),result.getString("message"),Toast.LENGTH_LONG).show();
                     if(result.getInt("success")==1){
-                        Intent intent = new Intent(MainActivity.this,HomeActivity.class);
+                        Intent intent = new Intent(MainActivity.this,MainActivity2.class);
                         startActivity(intent);
                     }
                 } else {
@@ -99,27 +98,5 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
-    /*
-    private void validate(String res){
-        boolean st =false;
-        try {
 
-
-            PreparedStatement ps = con.prepareStatement("select * from EventRegistration where Name=?");
-            ps.setString(1, res);
-
-            ResultSet rs =ps.executeQuery();
-            st = rs.next();
-
-        }
-        catch(Exception e) {
-            e.printStackTrace();
-        }
-        System.out.println("validate");
-        if(res.equals("user")) {
-            System.out.println("run here");
-            Intent intent = new Intent(MainActivity.this, HomeActivity.class);
-            startActivity(intent);
-        }
-    }*/
 }
