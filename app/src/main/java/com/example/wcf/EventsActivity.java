@@ -1,12 +1,19 @@
 package com.example.wcf;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -14,6 +21,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.android.material.navigation.NavigationView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -22,7 +30,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-public class EventsActivity extends AppCompatActivity {
+public class EventsActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     //the URL having the json data
    // private static final String JSON_URL = "http://192.168.86.69:7777/wcf/event.php";
@@ -34,10 +42,14 @@ public class EventsActivity extends AppCompatActivity {
     //the hero list where we will store all the hero objects after parsing json
     List<Event> heroList;
 
+    DrawerLayout drawerLayout;
+    NavigationView navigationView;
+    ActionBarDrawerToggle toggle;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_events2);
+        setContentView(R.layout.activity_events);
 
         //initializing listview and hero list
         listView = (ListView) findViewById(R.id.listView);
@@ -45,7 +57,20 @@ public class EventsActivity extends AppCompatActivity {
 
         //this method will fetch and parse the data
         loadHeroList();
+
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        
+        drawerLayout = findViewById(R.id.drawer);
+        navigationView = findViewById(R.id.navmenu);
+        navigationView.setItemIconTintList(null);
+        toggle = new ActionBarDrawerToggle(this,drawerLayout,toolbar,R.string.open,R.string.close);
+        drawerLayout.addDrawerListener(toggle);
+        toggle.setDrawerIndicatorEnabled(true);
+        navigationView.setNavigationItemSelectedListener(this);
+        toggle.syncState();
+
     }
+
 
     private void loadHeroList() {
         //getting the progressbar
@@ -109,5 +134,26 @@ public class EventsActivity extends AppCompatActivity {
 
         //adding the string request to request queue
         requestQueue.add(stringRequest);
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.event:
+                Intent intent1 = new Intent(EventsActivity.this, EventsActivity.class);
+                startActivity(intent1);
+                break;
+            case R.id.connect:
+                Intent intent2 = new Intent(EventsActivity.this, CheckConn.class);
+                startActivity(intent2);
+                break;
+            case R.id.main:
+                Intent intent3 = new Intent(EventsActivity.this, HomeActivity.class);
+                startActivity(intent3);
+                break;
+        }
+        drawerLayout = (DrawerLayout) findViewById(R.id.drawer);
+        drawerLayout.closeDrawer(GravityCompat.START);
+        return true;
     }
 }

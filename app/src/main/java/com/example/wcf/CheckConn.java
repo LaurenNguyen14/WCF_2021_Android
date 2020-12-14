@@ -14,7 +14,9 @@ public class CheckConn extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+
+
+        setContentView(R.layout.activity_check_conn);
         Button btn1 = (Button) findViewById(R.id.btn1);
         btn1.setOnClickListener(new View.OnClickListener() {
 
@@ -24,5 +26,6 @@ public class CheckConn extends AppCompatActivity {
                 Toast.makeText(context, "Button click event handler", Toast.LENGTH_LONG).show();
             }
         });
+
     }
 }

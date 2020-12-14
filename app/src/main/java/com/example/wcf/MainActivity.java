@@ -84,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
                 if (result != null) {
                     Toast.makeText(getApplicationContext(),result.getString("message"),Toast.LENGTH_LONG).show();
                     if(result.getInt("success")==1){
-                        Intent intent = new Intent(MainActivity.this,MainActivity2.class);
+                        Intent intent = new Intent(MainActivity.this, HomeActivity.class);
                         startActivity(intent);
                     }
                 } else {
