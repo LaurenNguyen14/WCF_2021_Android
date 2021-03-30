@@ -1,19 +1,14 @@
 package com.example.wcf;
 
-import android.content.Intent;
+//this class represent the activity schedule of a day
+
 import android.os.Bundle;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.core.view.GravityCompat;
-import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -21,7 +16,6 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.google.android.material.navigation.NavigationView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -30,47 +24,36 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-public class EventsActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class DayScheduleActivity extends AppCompatActivity {
+    //ListView eventsView;
+    //List events = new ArrayList<>();
+    //ArrayAdapter adapter;
+    private static final String JSON_URL = "http://192.168.64.2//test_android/activityIndex.php";
 
-    //the URL having the json data
-   // private static final String JSON_URL = "http://192.168.86.69:7777/wcf/event.php";
-
-    private static final String JSON_URL = "http://192.168.64.2//test_android/event.php";
     //listview object
-    ListView listView;
+    ListView activityListView;
 
     //the hero list where we will store all the hero objects after parsing json
-    List<Event> heroList;
-
-    DrawerLayout drawerLayout;
-    NavigationView navigationView;
-    ActionBarDrawerToggle toggle;
-
+    List<DayActivityModel> heroList;
+    int EventId;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_events);
 
-        //initializing listview and hero list
-        listView = (ListView) findViewById(R.id.listView);
+        // Receiving clicked value from home activity into activity using intent.
+        EventId = getIntent().getIntExtra("ListViewClickedValue",-1);
+
+        //check event day position, event position + 1 = event id in database
+        System.out.println("clicked: " + EventId);
+
+        setContentView(R.layout.activity_day_schedule);
+
         heroList = new ArrayList<>();
 
         //this method will fetch and parse the data
-        loadHeroList();
-
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        
-        drawerLayout = findViewById(R.id.drawer);
-        navigationView = findViewById(R.id.navmenu);
-        navigationView.setItemIconTintList(null);
-        toggle = new ActionBarDrawerToggle(this,drawerLayout,toolbar,R.string.open,R.string.close);
-        drawerLayout.addDrawerListener(toggle);
-        toggle.setDrawerIndicatorEnabled(true);
-        navigationView.setNavigationItemSelectedListener(this);
-        toggle.syncState();
+       loadHeroList();
 
     }
-
 
     private void loadHeroList() {
         //getting the progressbar
@@ -96,14 +79,17 @@ public class EventsActivity extends AppCompatActivity implements NavigationView.
                             JSONArray heroArray = new JSONArray(response);
 
                             //now looping through all the elements of the json array
+                            // only retrieve information if match event id
                             for (int i = 0; i < heroArray.length(); i++) {
                                 //getting the json object of the particular index inside the array
                                 JSONObject heroObject = heroArray.getJSONObject(i);
 
                                 //creating a hero object and giving them the values from json object
-                                Event hero = new Event(
-                                        heroObject.getString("EventName"),
-                                        heroObject.getString("Description")
+                                DayActivityModel hero = new DayActivityModel(
+                                        heroObject.getString("Name"),
+                                        heroObject.getString("Description"),
+                                        heroObject.getString("FromTime"),
+                                        heroObject.getString("ToTime")
                                 );
 
                                 //adding the hero to herolist
@@ -111,10 +97,10 @@ public class EventsActivity extends AppCompatActivity implements NavigationView.
                             }
 
                             //creating custom adapter object
-                            ListViewAdapter adapter = new ListViewAdapter(heroList, getApplicationContext());
+                            ListActivityAdapter adapter = new ListActivityAdapter(heroList, getApplicationContext());
 
                             //adding the adapter to listview
-                            listView.setAdapter(adapter);
+                            //activityListView.setAdapter(adapter);
 
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -136,24 +122,4 @@ public class EventsActivity extends AppCompatActivity implements NavigationView.
         requestQueue.add(stringRequest);
     }
 
-    @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.event:
-                Intent intent1 = new Intent(EventsActivity.this, EventsActivity.class);
-                startActivity(intent1);
-                break;
-            case R.id.connect:
-                Intent intent2 = new Intent(EventsActivity.this, CheckConn.class);
-                startActivity(intent2);
-                break;
-            case R.id.main:
-                Intent intent3 = new Intent(EventsActivity.this, HomeActivity.class);
-                startActivity(intent3);
-                break;
-        }
-        drawerLayout = (DrawerLayout) findViewById(R.id.drawer);
-        drawerLayout.closeDrawer(GravityCompat.START);
-        return true;
-    }
 }

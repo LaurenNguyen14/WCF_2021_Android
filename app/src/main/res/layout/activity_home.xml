@@ -5,36 +5,36 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/drawer"
-    tools:context=".HomeActivity">
+    tools:context=".HomeActivityTest">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="60dp"
+
         android:orientation="vertical">
 
         <TextView
             android:id="@+id/textView1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Home Activity"
-            android:textColor="@color/colorAccent"
             android:layout_centerInParent="true"
             android:gravity="center_horizontal"
-            android:textSize="30sp"/>
+            android:text="Home Activity"
+            android:textColor="@color/colorAccent"
+            android:textSize="30sp" />
     </RelativeLayout>
-    <include
-        android:layout_height="match_parent"
-        android:layout_width="match_parent"
-        layout="@layout/content_main"/>
+     <include
+         android:layout_height="match_parent"
+         android:layout_width="match_parent"
+         layout="@layout/content_main"/>
 
-    <com.google.android.material.navigation.NavigationView
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:id="@+id/navmenu"
-        app:menu="@menu/main_menu"
-        app:headerLayout="@layout/navheader"
-        android:layout_gravity="start"/>
+     <com.google.android.material.navigation.NavigationView
+         android:layout_width="wrap_content"
+         android:layout_height="match_parent"
+         android:id="@+id/navmenu"
+         app:menu="@menu/main_menu"
+         app:headerLayout="@layout/navheader"
+         android:layout_gravity="start"/>
 
 
 </androidx.drawerlayout.widget.DrawerLayout >

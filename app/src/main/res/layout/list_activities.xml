@@ -11,7 +11,7 @@
     <TextView
 
 
-        android:id="@+id/textViewEventName"
+        android:id="@+id/textViewActivityName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
 
@@ -27,19 +27,16 @@
 
     <TextView
         android:layout_gravity="center"
-
-        android:id="@+id/textViewEventDate"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"></TextView>
-
-    <TextView
-        android:layout_gravity="center"
-        android:id="@+id/textViewDescription"
+        android:id="@+id/textViewActivityDescription"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:autoLink="web"
 
         android:textColor="#08308e" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textViewFromTime"/>
 
     <RelativeLayout
         android:id="@+id/image_view_holder"

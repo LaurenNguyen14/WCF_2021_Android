@@ -8,7 +8,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-
+//this class check connection to database
 public class CheckConn extends AppCompatActivity {
     Context context;
     @Override

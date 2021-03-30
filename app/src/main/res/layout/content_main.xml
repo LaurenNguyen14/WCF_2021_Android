@@ -9,13 +9,13 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        app:title="Navigation Drawer"
-        app:titleTextColor="#F8F6F7"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:background="#020515"
+        android:background="#80402D4B"
         android:gravity="center"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark"/>
+        app:title="Menu"
+        app:titleTextColor="#F8F6F7" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

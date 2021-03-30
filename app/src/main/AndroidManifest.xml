@@ -13,12 +13,12 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity android:name=".CheckConn"></activity>
-        <activity android:name=".HomeActivity"  />
-        <activity android:name=".EventsActivity" />
+        <activity android:name=".HomeActivityTest"  />
+        <activity android:name=".HomeActivity" />
         <activity android:name=".EventDetail" />
         <activity
-            android:name=".DaySchedule"
-            android:parentActivityName=".HomeActivity" />
+            android:name=".DayScheduleActivity"
+            android:parentActivityName=".HomeActivityTest" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
