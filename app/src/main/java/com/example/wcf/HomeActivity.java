@@ -116,6 +116,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
                             //we have the array named hero inside the object
                             //so here we are getting that json array
+                            System.out.println(response);
                             JSONArray heroArray = new JSONArray(response);
 
                             //now looping through all the elements of the json array

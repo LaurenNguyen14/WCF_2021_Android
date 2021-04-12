@@ -11,7 +11,7 @@ public class DayActivityModel {
         this.timeTo = timeTo;
     }
 
-    public String getActivityNamename() {
+    public String getActivityName() {
         return activityName;
     }
 
