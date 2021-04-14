@@ -1,4 +1,4 @@
-package com.example.wcf;
+package com.example.wcf.presentation;
 
 //this class represent the activity schedule of a day
 
@@ -15,6 +15,9 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.wcf.R;
+import com.example.wcf.models.DayActivity;
+import com.example.wcf.presentation.adapter.ListActivityAdapter;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -35,7 +38,7 @@ public class DayScheduleActivity extends AppCompatActivity {
     ListView activityListView;
 
     //the hero list where we will store all the hero objects after parsing json
-    List<DayActivityModel> heroListActivities;
+    List<DayActivity> heroListActivities;
 
     Integer EventId;
     @Override
@@ -74,7 +77,7 @@ public class DayScheduleActivity extends AppCompatActivity {
                         JSONObject heroObject =jsonArray.getJSONObject(i);
 
                         //creating a hero object and giving them the values from json object
-                        DayActivityModel hero = new DayActivityModel(
+                        DayActivity hero = new DayActivity(
                                 heroObject.getString("Name"),
                                 heroObject.getString("Description"),
                                 heroObject.getString("FromTime"),

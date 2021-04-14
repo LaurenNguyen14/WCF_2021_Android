@@ -2,9 +2,9 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp"
-    android:orientation="vertical"
     android:background="@drawable/list_view"
+    android:orientation="vertical"
+    android:padding="16dp"
 
     >
 
@@ -14,39 +14,42 @@
         android:id="@+id/textViewActivityName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
         android:layout_gravity="center"
-        android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
+        android:text="Name"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+        android:textColor="#050000" />
 
     <View
-        android:layout_gravity="center"
         android:layout_width="match_parent"
         android:layout_height="1dp"
+        android:layout_gravity="center"
         android:background="@android:color/white" />
 
 
     <TextView
-        android:layout_gravity="center"
         android:id="@+id/textViewActivityDescription"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:autoLink="web"
 
         android:textColor="#08308e" />
+
     <TextView
+        android:id="@+id/textViewFromTime"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/textViewFromTime"/>
+        android:layout_height="wrap_content" />
+
     <TextView
+        android:id="@+id/textViewToTime"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/textViewToTime"/>
+        android:layout_height="wrap_content" />
+
     <RelativeLayout
         android:id="@+id/image_view_holder"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal">
-
 
 
     </RelativeLayout>

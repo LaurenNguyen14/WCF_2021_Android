@@ -1,19 +1,16 @@
-package com.example.wcf;
+package com.example.wcf.presentation;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.android.volley.Request;
@@ -22,6 +19,9 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.wcf.R;
+import com.example.wcf.models.Event;
+import com.example.wcf.presentation.adapter.ListEventAdapter;
 import com.google.android.material.navigation.NavigationView;
 
 import org.json.JSONArray;
@@ -33,7 +33,7 @@ import java.util.List;
 
 //home page with festival in 3 days
 
-public class HomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class HomeActivity extends AppCompatActivity {
 
     //the URL having the json data
    // private static final String JSON_URL = "http://192.168.86.69:7777/wcf/event.php";
@@ -83,14 +83,13 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         
-        drawerLayout = findViewById(R.id.drawer);
-        navigationView = findViewById(R.id.navmenu);
-        navigationView.setItemIconTintList(null);
-        toggle = new ActionBarDrawerToggle(this,drawerLayout,toolbar,R.string.open,R.string.close);
-        drawerLayout.addDrawerListener(toggle);
-        toggle.setDrawerIndicatorEnabled(true);
-        navigationView.setNavigationItemSelectedListener(this);
-        toggle.syncState();
+        //drawerLayout = findViewById(R.id.drawer);
+        //navigationView = findViewById(R.id.navmenu);
+        //navigationView.setItemIconTintList(null);
+        //toggle = new ActionBarDrawerToggle(this,drawerLayout,toolbar,R.string.open,R.string.close);
+        //drawerLayout.addDrawerListener(toggle);
+        //toggle.setDrawerIndicatorEnabled(true);
+        //toggle.syncState();
 
     }
 
@@ -136,7 +135,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                             }
 
                             //creating custom adapter object
-                            ListViewAdapter adapter = new ListViewAdapter(heroList, getApplicationContext());
+                            ListEventAdapter adapter = new ListEventAdapter(heroList, getApplicationContext());
 
                             //adding the adapter to listview
                             listView.setAdapter(adapter);
@@ -159,26 +158,5 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
         //adding the string request to request queue
         requestQueue.add(stringRequest);
-    }
-
-    @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.event:
-                Intent intent1 = new Intent(HomeActivity.this, HomeActivity.class);
-                startActivity(intent1);
-                break;
-            case R.id.connect:
-                Intent intent2 = new Intent(HomeActivity.this, CheckConn.class);
-                startActivity(intent2);
-                break;
-            case R.id.main:
-                Intent intent3 = new Intent(HomeActivity.this, HomeActivityTest.class);
-                startActivity(intent3);
-                break;
-        }
-        drawerLayout = (DrawerLayout) findViewById(R.id.drawer);
-        drawerLayout.closeDrawer(GravityCompat.START);
-        return true;
     }
 }

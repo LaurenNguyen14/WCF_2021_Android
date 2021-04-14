@@ -1,4 +1,4 @@
-package com.example.wcf;
+package com.example.wcf.presentation.adapter;
 
 
 import android.content.Context;
@@ -10,9 +10,12 @@ import android.widget.ArrayAdapter;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.example.wcf.R;
+import com.example.wcf.models.Event;
+
 import java.util.List;
 
-public class ListViewAdapter extends ArrayAdapter<Event> {
+public class ListEventAdapter extends ArrayAdapter<Event> {
     //the event list that will be displayed
     private List<Event> eventList;
 
@@ -21,7 +24,7 @@ public class ListViewAdapter extends ArrayAdapter<Event> {
 
     //here we are getting the eventList and context
     //so while creating the object of this adapter class we need to give eventList and context
-    public ListViewAdapter(List<Event> eventList, Context mCtx) {
+    public ListEventAdapter(List<Event> eventList, Context mCtx) {
         super(mCtx, R.layout.list_items, eventList);
         this.eventList = eventList;
         this.mCtx = mCtx;

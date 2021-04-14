@@ -1,4 +1,4 @@
-package com.example.wcf;
+package com.example.wcf.models;
 
 //information of big event
 public class Event {

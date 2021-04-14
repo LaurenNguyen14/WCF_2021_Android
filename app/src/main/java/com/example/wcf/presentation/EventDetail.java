@@ -1,4 +1,4 @@
-package com.example.wcf;
+package com.example.wcf.presentation;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,6 +7,8 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.wcf.R;
 
 import java.util.Calendar;
 
@@ -20,7 +22,7 @@ public class EventDetail extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_event_detail);
+        setContentView(R.layout.activity_detail);
 
 
 

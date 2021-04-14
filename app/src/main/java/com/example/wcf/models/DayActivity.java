@@ -1,10 +1,10 @@
-package com.example.wcf;
+package com.example.wcf.models;
 
 //this class is object of the activity
-public class DayActivityModel {
+public class DayActivity {
     String activityName, description,timeFrom,timeTo;
 
-    public DayActivityModel(String activityName, String description, String timeFrom, String timeTo) {
+    public DayActivity(String activityName, String description, String timeFrom, String timeTo) {
         this.activityName = activityName;
         this.description = description;
         this.timeFrom=timeFrom;

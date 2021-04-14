@@ -9,6 +9,8 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.wcf.presentation.HomeActivity;
+
 public class MainActivity extends AppCompatActivity {
     //private EditText resNum;
     private Button lgButton;
