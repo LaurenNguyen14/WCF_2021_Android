@@ -2,7 +2,10 @@ package com.example.wcf.presentation;
 
 //this class represent the activity schedule of a day
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -48,6 +51,20 @@ public class DayScheduleActivity extends AppCompatActivity {
 
         activityListView = findViewById(R.id.listviewActivity);
 
+        activityListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                DayActivity clickedItem  = (DayActivity) parent.getItemAtPosition(position);
+                String name = clickedItem.getActivityName();
+
+
+
+                Intent intent = new Intent(DayScheduleActivity.this, ActivityDetail.class);
+                intent.putExtra("ListViewClickedName", name);
+                startActivity(intent);
+
+            }
+        });
         // Receiving clicked value from home activity into activity using intent.
         EventId = getIntent().getIntExtra("ListViewClickedValue",-1) +1;
 

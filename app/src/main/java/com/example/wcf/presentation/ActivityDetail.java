@@ -14,7 +14,7 @@ import java.util.Calendar;
 
 //this class let user add activity to their calendar, needs to be refactor later
 
-public class EventDetail extends AppCompatActivity {
+public class ActivityDetail extends AppCompatActivity {
     TextView actName;
     Button addCal;
 
@@ -29,10 +29,8 @@ public class EventDetail extends AppCompatActivity {
         actName = (TextView) findViewById(R.id.actName);
         addCal=(Button) findViewById(R.id.buttonCalendar);
 
-        Bundle bundle = getIntent().getExtras();
-        if (bundle!=null){
-            actName.setText(bundle.getString("EventName"));
-        }
+        String name = getIntent().getStringExtra("ListViewClickedName");
+        actName.setText(name);
 
         addCal.setOnClickListener(new View.OnClickListener(){
 

@@ -13,7 +13,7 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity android:name=".presentation.HomeActivity" />
-        <activity android:name=".presentation.EventDetail" />
+        <activity android:name=".presentation.ActivityDetail" />
         <activity
             android:name=".presentation.DayScheduleActivity"
        />
